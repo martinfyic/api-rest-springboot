@@ -16,7 +16,7 @@ public class Usuario {
 
     @Getter @Setter @Column(name = "id")
     @Id
-    private String idUsuario;
+    private double idUsuario;
 
     @Getter @Setter @Column(name = "nombre")
     private String nombre;
@@ -32,5 +32,8 @@ public class Usuario {
 
     @Getter @Setter @Column(name = "password")
     private String password;
+
+    @Getter @Setter @Column(name = "activo")
+    private boolean activo;
 
 }
