@@ -18,7 +18,25 @@ public class UsuarioDaoImp implements UsuarioDao{
     @Override
     public List<Usuario> getUsuarios() {
 
-        String query = "FROM Usuario";
+        String query = "FROM Usuario u WHERE u.activo = true";
         return entityManager.createQuery(query).getResultList();
+    }
+
+    @Override
+    public Usuario getUsuarioById(double id) {
+
+        return entityManager.find(Usuario.class, id);
+    }
+
+    @Override
+    public void deleteUsuario(double id) {
+
+        //Eliminar de DB
+        //Usuario usuario = entityManager.find(Usuario.class, id);
+        //entityManager.remove(usuario);
+
+        //Eliminar soft-delete
+        String query = "UPDATE Usuario u SET u.activo = false WHERE u.id = :id";
+        entityManager.createQuery(query).setParameter("id", id).executeUpdate();
     }
 }
