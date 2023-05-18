@@ -34,6 +34,6 @@ public class Usuario {
     private String password;
 
     @Getter @Setter @Column(name = "activo")
-    private boolean activo;
+    private boolean activo = true;
 
 }
