@@ -7,7 +7,12 @@ import java.util.List;
 public interface UsuarioDao {
 
     List<Usuario> getUsuarios();
+
     Usuario getUsuarioById(double id);
 
     void deleteUsuario(double id);
+
+    List<Usuario> getUsuariosDesactivados();
+
+    void postUser(Usuario usuario);
 }
