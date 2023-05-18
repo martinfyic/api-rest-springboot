@@ -3,10 +3,7 @@ package com.javaapirest.apirest.controllers;
 import com.javaapirest.apirest.dao.UsuarioDao;
 import com.javaapirest.apirest.models.Usuario;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.ArrayList;
@@ -18,8 +15,13 @@ public class UsuarioController {
     private UsuarioDao usuarioDao;
 
     @GetMapping(value="api/usuarios")
-    public List<Usuario> getusuarios() {
+    public List<Usuario> getUsuarios() {
         return usuarioDao.getUsuarios();
+    }
+
+    @GetMapping(value="api/usuarios/desactivados")
+    public List<Usuario> getUsuariosDesactivados() {
+        return usuarioDao.getUsuariosDesactivados();
     }
 
     @GetMapping(value="api/usuarios/{id}")
@@ -30,5 +32,10 @@ public class UsuarioController {
     @DeleteMapping(value="api/usuarios/{id}")
     public void deleteUsuario(@PathVariable double id) {
         usuarioDao.deleteUsuario(id);
+    }
+
+    @PostMapping(value="api/usuarios")
+    public void postUser(@RequestBody Usuario usuario) {
+        usuarioDao.postUser(usuario);
     }
 }
