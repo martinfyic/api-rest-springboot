@@ -23,6 +23,18 @@ public class UsuarioDaoImp implements UsuarioDao{
     }
 
     @Override
+    public List<Usuario> getUsuariosDesactivados() {
+
+        String query = "FROM Usuario u WHERE u.activo = false";
+        return entityManager.createQuery(query).getResultList();
+    }
+
+    @Override
+    public void postUser(Usuario usuario) {
+        entityManager.merge(usuario);
+    }
+
+    @Override
     public Usuario getUsuarioById(double id) {
 
         return entityManager.find(Usuario.class, id);
@@ -39,4 +51,6 @@ public class UsuarioDaoImp implements UsuarioDao{
         String query = "UPDATE Usuario u SET u.activo = false WHERE u.id = :id";
         entityManager.createQuery(query).setParameter("id", id).executeUpdate();
     }
+
+
 }
