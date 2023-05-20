@@ -30,7 +30,7 @@ public class UsuarioDaoImp implements UsuarioDao{
     }
 
     @Override
-    public void postUser(Usuario usuario) {
+    public void postUsuario(Usuario usuario) {
         entityManager.merge(usuario);
     }
 
@@ -52,5 +52,14 @@ public class UsuarioDaoImp implements UsuarioDao{
         entityManager.createQuery(query).setParameter("id", id).executeUpdate();
     }
 
+    @Override
+    public void patchUsuario(double id, Usuario usuario) {
 
+        /*
+        ===================================================
+        Terminar de completar logica de actualizar usuario
+        ===================================================
+        */
+
+    }
 }

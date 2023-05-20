@@ -14,5 +14,7 @@ public interface UsuarioDao {
 
     List<Usuario> getUsuariosDesactivados();
 
-    void postUser(Usuario usuario);
+    void postUsuario(Usuario usuario);
+
+    void patchUsuario(double id, Usuario usuario);
 }
